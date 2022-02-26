@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package k_ota_schema_registry;
+
+message Teacher {
+  string id = 1;
+  string name = 2;
+}

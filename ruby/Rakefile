@@ -1,0 +1,12 @@
+# frozen_string_literal: true
+
+require "bundler/gem_tasks"
+task default: 'protobuf:generate'
+
+namespace :protobuf do
+  desc 'generate ruby file'
+  task :generate do
+    protofiles = Dir.glob('protos/**/*.proto', base: '..')
+    system(['protoc --proto_path=protos --ruby_out=ruby/lib', *protofiles].join(' '), chdir: '..')
+  end
+end
